@@ -5,6 +5,12 @@
       "bundler": "metro"
     },
     "name": "freefall",
-    "slug": "freefall"
+    "slug": "freefall",
+    "android": {
+      "package": "com.steflw.freefall"
+    },
+    "ios": {
+      "bundleIdentifier": "com.steflw.freefall"
+    }
   }
 }
