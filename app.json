@@ -1,6 +1,7 @@
 {
   "expo": {
     "scheme": "acme",
+    "plugins": ["expo-apple-authentication"],
     "web": {
       "bundler": "metro"
     },
@@ -10,7 +11,15 @@
       "package": "com.steflw.freefall"
     },
     "ios": {
-      "bundleIdentifier": "com.steflw.freefall"
+      "bundleIdentifier": "com.steflw.freefall",
+      "supportsTablet": false,
+      "infoPlist": {
+        "UIBackgroundModes": ["location"],
+        "NSLocationWhenInUseUsageDescription": "This app needs access to your location to track your freefall.",
+        "NSLocationAlwaysUsageDescription": "This app needs access to your location to track your freefall.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app needs access to your location to track your freefall.",
+        "NSMotionUsageDescription": "This app needs access to your location to track your freefall."
+      }
     }
   }
 }
