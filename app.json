@@ -1,11 +1,14 @@
 {
   "expo": {
-    "scheme": "acme",
-    "plugins": ["expo-apple-authentication"],
+    "originalFullName": "@steflw/Freefall",
+    "scheme": "freefall",
+    "plugins": [
+      "expo-apple-authentication"
+    ],
     "web": {
       "bundler": "metro"
     },
-    "name": "freefall",
+    "name": "Freefall",
     "slug": "freefall",
     "android": {
       "package": "com.steflw.freefall"
@@ -14,11 +17,18 @@
       "bundleIdentifier": "com.steflw.freefall",
       "supportsTablet": false,
       "infoPlist": {
-        "UIBackgroundModes": ["location"],
+        "UIBackgroundModes": [
+          "location"
+        ],
         "NSLocationWhenInUseUsageDescription": "This app needs access to your location to track your freefall.",
         "NSLocationAlwaysUsageDescription": "This app needs access to your location to track your freefall.",
         "NSLocationAlwaysAndWhenInUseUsageDescription": "This app needs access to your location to track your freefall.",
         "NSMotionUsageDescription": "This app needs access to your location to track your freefall."
+      }
+    },
+    "extra": {  
+      "eas": {
+        "projectId": "321eb803-0e72-4382-9af1-53bb8b353a53"
       }
     }
   }

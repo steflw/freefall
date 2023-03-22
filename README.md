@@ -1,16 +1,28 @@
 # TODO
 
 ## Backend
-- Deploy minimal app on railway
-- Ensure authenticated routes work
-- Add route for storing a jump
-- Add route for reading a jump
+- Deploy minimal app on railway ✅
+- Add route for storing a jump ✅
+- Add API key
+- Add API validation
+- Add route for reading a jump 
 - Add route for fetching user info
 
 ## Mobile
-- Fix apple sign up
-- Add sign up/login routes + minimal pages
-- Add login route
+
+- TOP PRIORITY:
+  - Run expo app on physical device
+  - Run watch app on physical device
+  - Test sending minimal userInfo
+  - Migrate old code to new project
+
+- Bring new Freefall app up to speed with watchtestexpo
+  - Add watch connectivity
+  - Send user info from native side
+  - Add sensor manager code
+  - Add Watch UI
+  - Test using info to transfer jumps instead of send message
+  - Show status of jumps being sent
 - Add hooks for syncing jumps/watch connection etc
   - Chunking/assembling hook/algo
   - Watch sends array of all jumps stored on watch
@@ -18,13 +30,18 @@
   - Mobile responds with jumps it doesnt have yet
   - Watch sends jumps - chunked
 - Show jumps in list
-- Send jumps to backend
+- Allow navigation to jump page
+- Auto sync jumps with backend
 
 ## Watch
 - Send jump data in chunks
 - Check stored jumps against stored mobile jumps, delete local jumps that exist on mobile 
   
-
+## Web analytics dashboard
+- View jumps + debugging 
+- High level analytics
+- Potential for strava heatmap style analytics/grafana dashboard stuff
+- Requires authenticated routes on API for fetching jump data
 
 # Future
 - Add stats logic (TS or Crux??)
@@ -34,7 +51,7 @@
 
 # Design
 - Jumps list
-- 
+- Jump detail (minimal gemini vibe to start??)
 - Logo
 - Brand identity (colours, fonts etc.)
 - 
