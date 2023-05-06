@@ -38,9 +38,9 @@ extension Jump: Encodable {
 
     public func encode(to encoder: Encoder) throws {
       var container = encoder.container(keyedBy: CodingKeys.self)
-      try container.encode([self.altitude], forKey: .altitude)
-      try container.encode([self.location], forKey: .location)
-      try container.encode([self.accelerometer], forKey: .accelerometer)
+      try container.encode(self.altitude, forKey: .altitude)
+      try container.encode(self.location, forKey: .location)
+      try container.encode(self.accelerometer, forKey: .accelerometer)
       try container.encode(timestamp, forKey: .timestamp)
       try container.encode(id, forKey: .id)
     }
