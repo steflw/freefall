@@ -1,46 +1,62 @@
-import { NativeModules } from "react-native";
-
-const { WatchSessionModule } = NativeModules;
-import * as FileSystem from 'expo-file-system';
-
-console.log({ WatchSessionModule });
+import * as FileSystem from "expo-file-system";
 
 import { useState, useEffect } from "react";
 import * as w from "react-native-watch-connectivity";
 
-type UseWatchReturnType = {
+import { create } from 'zustand'
+
+type WatchStoreType = {
   watchReachability: boolean;
-};
+  setWatchReachability: (reachability: boolean) => void;
+}
 
-export const useWatch = (): UseWatchReturnType => {
-  const [reachability, setReachability] = useState<boolean>(false);
+const usewatchStore = create<WatchStoreType>()((set) => ({
+  watchReachability: false,
+  setWatchReachability: (reachability) => set({ watchReachability: reachability }),
+}))
 
-  useEffect(() => {
-    w.watchEvents.on("reachability", (reachability) => {
-      setReachability(reachability);
-    });
-    w.watchEvents.on("file", async (file) => {
-      console.log({ file });
+w.watchEvents.on("reachability", async (reachability) => {
+  usewatchStore.getState().setWatchReachability(reachability)
+});
 
-    });
-    w.watchEvents.on("file-received", async (file) => {
-      console.log({ fileReceived: file });
-      
-      try {
-        const fetchedRes = await FileSystem.readAsStringAsync(file[0].url)
-        console.log({fetchedRes})
-      } catch (error) {
-        console.error('file received error', error);
-      }
-    });
-    w.watchEvents.on("file-received-error", (error) => {
-      console.log({ error });
-    });
+w.watchEvents.on("file-received", async (file) => {
+  console.log("file-received event", file);
+  try {
+    const fetchedRes = await FileSystem.readAsStringAsync(file[0].url);
+    console.log("fetchedRes", fetchedRes);
+  } catch (error) {
+    console.error("file received event error", error);
+  }
+});
 
-    return () => {};
-  }, []);
+w.watchEvents.on("file", async (file) => {
+  console.log("file event", file);
+});
 
-  return {
-    watchReachability: reachability,
-  };
-};
+w.watchEvents.on("file-received-error", async (error) => {
+  console.log("file-received-error event", error);
+});
+
+const FILES_RECEIVED_DIR = FileSystem.documentDirectory + "/FilesReceived";
+
+async function readDirectory() {
+  const files = await FileSystem.readDirectoryAsync(FILES_RECEIVED_DIR);
+  console.log("files", files);
+  return files;
+}
+
+async function deleteFile(fileUri) {
+  try {
+    await FileSystem.deleteAsync(fileUri);
+    console.log("File deleted:", fileUri);
+  } catch (error) {
+    console.error("Error deleting file:", error);
+  }
+}
+
+async function deleteAllFiles() {
+  const files = await readDirectory();
+  files.forEach(async (file) => {
+    await deleteFile(`${FILES_RECEIVED_DIR}/${file}`);
+  });
+}

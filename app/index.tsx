@@ -1,13 +1,18 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { useWatch } from '../hooks/connectivity/watch'
+import { View, Text, StyleSheet } from "react-native";
+import React from "react";
+import "../hooks/connectivity/watch";
+import { useLocationPermissions } from "../hooks/useLocationPermissions";
 
 export default function Home() {
-  const {watchReachability} = useWatch()
-  console.log({watchReachability})
+  const hasLocationPermissions = useLocationPermissions();
+
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={styles.container}>
       <Text>Home</Text>
     </View>
-  )
+  );
 }
+
+const styles = StyleSheet.create({
+  container: { flex: 1, justifyContent: "center", alignItems: "center" },
+});

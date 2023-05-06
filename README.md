@@ -1,9 +1,18 @@
 # TODO
 
+## Mobile
+
+
+
+
+
+
+
+----------------------------------------- Legacy -----------------------------------------
 ## Backend
 - Deploy minimal app on railway ✅
 - Add route for storing a jump ✅
-- Add API key
+- Add API key 
 - Add API validation
 - Add route for reading a jump 
 - Add route for fetching user info
@@ -34,8 +43,6 @@
 - Auto sync jumps with backend
 
 ## Watch
-- Send jump data in chunks
-- Check stored jumps against stored mobile jumps, delete local jumps that exist on mobile 
   
 ## Web analytics dashboard
 - View jumps + debugging 

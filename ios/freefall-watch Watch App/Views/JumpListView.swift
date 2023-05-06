@@ -17,9 +17,6 @@ struct JumpsListView: View {
       }
     }.navigationTitle("Jumps").navigationDestination(for: Jump.self) {jump in JumpDetailView(jump: jump)
     }
-//    List(jumps) {
-//
-//    }
   }
 }
 

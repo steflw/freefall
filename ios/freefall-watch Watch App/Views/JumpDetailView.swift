@@ -55,8 +55,7 @@ struct JumpDetailView: View {
           .appendingPathComponent((jump.id?.uuidString ?? "json")+".json")
       try jsonData.write(to: fileURL)
       print("Person JSON written to file at: \(fileURL)")
-      
-      
+
 //      let message: [String: Any] = ["jumpsData": json]
       self.phoneConnector.session.transferFile(fileURL, metadata: nil)
     } catch {

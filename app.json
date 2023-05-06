@@ -3,7 +3,12 @@
     "originalFullName": "@steflw/Freefall",
     "scheme": "freefall",
     "plugins": [
-      "expo-apple-authentication"
+      "expo-apple-authentication", [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ]
     ],
     "web": {
       "bundler": "metro"
