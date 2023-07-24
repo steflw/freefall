@@ -6,5 +6,6 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="location" optional="YES" attributeType="Transformable" customClassName=".CLLocation"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="unixTimestamp" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" customClassName="NSNumber"/>
     </entity>
 </model>

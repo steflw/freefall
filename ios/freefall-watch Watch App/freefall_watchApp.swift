@@ -82,6 +82,7 @@ class JumpManager: NSObject, ObservableObject {
     let newReading = Jump(context: context)
     
     newReading.timestamp = self.startTime
+    newReading.unixTimestamp = self.startTime.timeIntervalSince1970
     newReading.altitude = sensors.alti.altiReadings
     newReading.location = sensors.locationManager.locationReadings
 //    newReading.accelerometer = sensors.accelerometer.accelerometerData

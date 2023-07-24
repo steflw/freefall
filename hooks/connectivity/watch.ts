@@ -10,38 +10,54 @@ type WatchStoreType = {
   setWatchReachability: (reachability: boolean) => void;
 }
 
-const usewatchStore = create<WatchStoreType>()((set) => ({
+const useWatchStore = create<WatchStoreType>()((set) => ({
   watchReachability: false,
   setWatchReachability: (reachability) => set({ watchReachability: reachability }),
 }))
 
 w.watchEvents.on("reachability", async (reachability) => {
-  usewatchStore.getState().setWatchReachability(reachability)
+  useWatchStore.getState().setWatchReachability(reachability)
 });
 
 w.watchEvents.on("file-received", async (file) => {
-  console.log("file-received event", file);
   try {
     const fetchedRes = await FileSystem.readAsStringAsync(file[0].url);
-    console.log("fetchedRes", fetchedRes);
+    const parsedRes = JSON.parse(fetchedRes)
+    processJumpFile(parsedRes)
   } catch (error) {
     console.error("file received event error", error);
   }
 });
 
+type JumpFile = {
+  id: string;
+  unixTimestamp: number;
+  location: [];
+  altitude: [];
+}
+
+async function processJumpFile(file: JumpFile) {
+  console.log('file fields', Object.keys(file))
+  console.log('file.unixtimestamp', file.unixTimestamp)
+  console.log('file.location length', file?.location.length)
+  console.log('file.altitude length', file?.altitude.length)
+  // await deleteAllFiles()
+  // console.log('file to process', file)
+}
+
 w.watchEvents.on("file", async (file) => {
-  console.log("file event", file);
+  console.log("FILE EVENT");
 });
 
 w.watchEvents.on("file-received-error", async (error) => {
-  console.log("file-received-error event", error);
+  console.log("FILE RECEIVED ERROR EVENT");
+  // deleteAllFiles();
 });
 
 const FILES_RECEIVED_DIR = FileSystem.documentDirectory + "/FilesReceived";
 
 async function readDirectory() {
   const files = await FileSystem.readDirectoryAsync(FILES_RECEIVED_DIR);
-  console.log("files", files);
   return files;
 }
 

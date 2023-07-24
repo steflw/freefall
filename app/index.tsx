@@ -5,7 +5,7 @@ import { useLocationPermissions } from "../hooks/useLocationPermissions";
 
 export default function Home() {
   const hasLocationPermissions = useLocationPermissions();
-
+  
   return (
     <View style={styles.container}>
       <Text>Home</Text>

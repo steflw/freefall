@@ -4,7 +4,11 @@
 
 
 
-
+- update sensor timestamps to use unix time
+- process jump data
+  - send to analytics service
+  - store in async storage
+  - 
 
 
 
@@ -30,7 +34,6 @@
   - Send user info from native side
   - Add sensor manager code
   - Add Watch UI
-  - Test using info to transfer jumps instead of send message
   - Show status of jumps being sent
 - Add hooks for syncing jumps/watch connection etc
   - Chunking/assembling hook/algo

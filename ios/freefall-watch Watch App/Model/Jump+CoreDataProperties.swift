@@ -21,7 +21,8 @@ extension Jump {
     @NSManaged public var accelerometer: [CMDeviceMotion]?
     @NSManaged public var id: UUID?
     @NSManaged public var timestamp: Date?
-}
+    @NSManaged public var unixTimestamp: Double
+ }
 
 extension Jump : Identifiable {
 
@@ -34,6 +35,7 @@ extension Jump: Encodable {
         case accelerometer
         case id
         case timestamp
+        case unixTimestamp
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -42,6 +44,7 @@ extension Jump: Encodable {
       try container.encode(self.location, forKey: .location)
       try container.encode(self.accelerometer, forKey: .accelerometer)
       try container.encode(timestamp, forKey: .timestamp)
+      try container.encode(unixTimestamp, forKey: .unixTimestamp)
       try container.encode(id, forKey: .id)
     }
 }
@@ -113,4 +116,24 @@ extension CMAcceleration: Encodable {
     try container.encode(y, forKey: .y)
     try container.encode(z, forKey: .z)
   }
+}
+
+class DateTransformer: ValueTransformer {
+    override class func transformedValueClass() -> AnyClass {
+        return NSDate.self
+    }
+    
+    override class func allowsReverseTransformation() -> Bool {
+        return true
+    }
+    
+    override func transformedValue(_ value: Any?) -> Any? {
+        guard let date = value as? Date else { return nil }
+        return NSDate(timeIntervalSince1970: date.timeIntervalSince1970)
+    }
+    
+    override func reverseTransformedValue(_ value: Any?) -> Any? {
+        guard let date = value as? NSDate else { return nil }
+        return Date(timeIntervalSince1970: date.timeIntervalSince1970)
+    }
 }
