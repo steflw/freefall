@@ -23,9 +23,7 @@ struct freefall_Watch_AppApp: App {
 struct ContentView: View {
   @Environment(\.managedObjectContext) private var viewContext
   @ObservedObject var jumpManager: JumpManager
-  
-  //  @State var jumps: [Jump] = []
-  
+
   @FetchRequest(
     sortDescriptors: [NSSortDescriptor(keyPath: \Jump.timestamp, ascending: true)],
     animation: .default)
@@ -38,8 +36,6 @@ struct ContentView: View {
   var body: some View {
     VStack {
       NavigationStack {
-//        NavigationLink("Record a Jump", destination: ControlsView(jumpManager: jumpManager))
-//        NavigationLink("Jumps", destination: JumpsListView(jumps: jumps))
         List {
           ControlsView(jumpManager: jumpManager)
           ForEach(jumps){
@@ -48,8 +44,6 @@ struct ContentView: View {
         }.navigationTitle("Jumps").navigationDestination(for: Jump.self) {jump in JumpDetailView(jump: jump)
         }
       }
-      //        ControlsView(jumpManager: jumpManager)
-      //        JumpsListView(jumps: jumps)
     }
   }
 }
@@ -74,17 +68,36 @@ class JumpManager: NSObject, ObservableObject {
   func stop() {
     sensors.stop()
     storeJump()
+
     sensors.reset()
     self.active = false
   }
-  
+
   func storeJump() {
     let newReading = Jump(context: context)
-    
     newReading.timestamp = self.startTime
     newReading.unixTimestamp = self.startTime.timeIntervalSince1970
-    newReading.altitude = sensors.alti.altiReadings
-    newReading.location = sensors.locationManager.locationReadings
+    
+    let jsonEncoder = JSONEncoder()
+    print("altiReadings", sensors.altiManager.altiReadings)
+    do {
+        let jsonData = try jsonEncoder.encode(sensors.altiManager.altiReadings)
+        let jsonString = String(data: jsonData, encoding: .utf8)
+      newReading.altitude = jsonString ?? ""
+        print(jsonString ?? "Failed to convert JSON data to string.")
+    } catch {
+        print("Failed to encode altitude data to JSON: \(error)")
+    }
+    
+    do {
+        let jsonData = try jsonEncoder.encode(sensors.locationManager.locationReadings)
+        let jsonString = String(data: jsonData, encoding: .utf8)
+      newReading.location = jsonString ?? ""
+        print(jsonString ?? "Failed to convert JSON data to string.")
+    } catch {
+        print("Failed to encode location data to JSON: \(error)")
+    }
+  
 //    newReading.accelerometer = sensors.accelerometer.accelerometerData
     newReading.id = UUID()
     do {
@@ -98,26 +111,15 @@ class JumpManager: NSObject, ObservableObject {
       //        fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
     }
   }
-  
-  func getAllReadings() {
-    let fetchRequest: NSFetchRequest<Jump> = Jump.fetchRequest()
-    
-    do {
-      let entries = try context.fetch(fetchRequest)
-      //      print("Entires:",  entries)
-      print("Num of entries:",  entries.count)
-      
-      for entry in entries {
-        print("entry", entry)
-        let altitudeReadings = entry.altitude ?? []
-//        print("readings: ", entry.timestamp, "Altitude count:", altitudeReadings.count, "Location count", entry.location?.count, "Accelerometer count:", entry.accelerometer?.count)
-                print("readings: ", entry.timestamp, "Altitude count:", altitudeReadings.count, "Location count", entry.location?.count)
-      }
-      
-    } catch {
-      let nsError = error as NSError
-      print("ERROR when reading:", nsError)
-      print("ERROR when reading:", nsError.userInfo)
-    }
-  }
+
+}
+
+struct JumpData: Codable {
+    let timestamp: TimeInterval
+    let altitudes: [AltimeterReading]
+}
+
+public struct AltimeterReading: Codable {
+    let timestamp: TimeInterval
+    let relativeAltitude: String
 }

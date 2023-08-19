@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,7 +14,6 @@
 		96905EF65AED1B983A6B3ABC /* libPods-freefall.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-freefall.a */; };
 		B135D64829CA45E700A918BC /* PhoneConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B135D64729CA45E700A918BC /* PhoneConnector.swift */; };
 		B14D8C2B29BFDBD9002F8F23 /* freefall_watchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14D8C2A29BFDBD9002F8F23 /* freefall_watchApp.swift */; };
-		B14D8C2D29BFDBD9002F8F23 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14D8C2C29BFDBD9002F8F23 /* ContentView.swift */; };
 		B14D8C2F29BFDBDA002F8F23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B14D8C2E29BFDBDA002F8F23 /* Assets.xcassets */; };
 		B14D8C3229BFDBDA002F8F23 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B14D8C3129BFDBDA002F8F23 /* Preview Assets.xcassets */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
@@ -27,8 +26,6 @@
 		B1C9602F29CA6B5B00AAD22D /* Jump+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C9602E29CA6B5B00AAD22D /* Jump+CoreDataClass.swift */; };
 		B1C9603129CA6B6600AAD22D /* Jump+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C9603029CA6B6600AAD22D /* Jump+CoreDataProperties.swift */; };
 		B1C9603429CA6C7200AAD22D /* ControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C9603329CA6C7200AAD22D /* ControlsView.swift */; };
-		B1C9603629CA6CB700AAD22D /* JumpListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C9603529CA6CB700AAD22D /* JumpListView.swift */; };
-		B1C9603829CA6CC700AAD22D /* JumpListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C9603729CA6CC700AAD22D /* JumpListItem.swift */; };
 		B1C9603A29CA6CE000AAD22D /* JumpDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C9603929CA6CE000AAD22D /* JumpDetailView.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		E9ABBF1277934C58B8C42C6F /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607A676031EB4F51B92B7F0E /* noop-file.swift */; };
@@ -74,7 +71,6 @@
 		B135D64729CA45E700A918BC /* PhoneConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneConnector.swift; sourceTree = "<group>"; };
 		B14D8C2829BFDBD9002F8F23 /* freefall-watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "freefall-watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B14D8C2A29BFDBD9002F8F23 /* freefall_watchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = freefall_watchApp.swift; sourceTree = "<group>"; };
-		B14D8C2C29BFDBD9002F8F23 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B14D8C2E29BFDBDA002F8F23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B14D8C3129BFDBDA002F8F23 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B1C9602229CA690700AAD22D /* SensorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorManager.swift; sourceTree = "<group>"; };
@@ -85,8 +81,6 @@
 		B1C9602E29CA6B5B00AAD22D /* Jump+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Jump+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B1C9603029CA6B6600AAD22D /* Jump+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Jump+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B1C9603329CA6C7200AAD22D /* ControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsView.swift; sourceTree = "<group>"; };
-		B1C9603529CA6CB700AAD22D /* JumpListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpListView.swift; sourceTree = "<group>"; };
-		B1C9603729CA6CC700AAD22D /* JumpListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpListItem.swift; sourceTree = "<group>"; };
 		B1C9603929CA6CE000AAD22D /* JumpDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpDetailView.swift; sourceTree = "<group>"; };
 		B1C9603B29CA823D00AAD22D /* freefall-watch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "freefall-watch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
@@ -186,7 +180,6 @@
 				B1C9602D29CA6B4600AAD22D /* Model */,
 				B1C9602129CA68E800AAD22D /* Sensors */,
 				B14D8C2A29BFDBD9002F8F23 /* freefall_watchApp.swift */,
-				B14D8C2C29BFDBD9002F8F23 /* ContentView.swift */,
 				B14D8C2E29BFDBDA002F8F23 /* Assets.xcassets */,
 				B14D8C3029BFDBDA002F8F23 /* Preview Content */,
 				B135D64729CA45E700A918BC /* PhoneConnector.swift */,
@@ -227,8 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				B1C9603329CA6C7200AAD22D /* ControlsView.swift */,
-				B1C9603529CA6CB700AAD22D /* JumpListView.swift */,
-				B1C9603729CA6CC700AAD22D /* JumpListItem.swift */,
 				B1C9603929CA6CE000AAD22D /* JumpDetailView.swift */,
 			);
 			path = Views;
@@ -498,8 +489,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1C9602929CA699E00AAD22D /* Persistance.swift in Sources */,
-				B1C9603829CA6CC700AAD22D /* JumpListItem.swift in Sources */,
-				B14D8C2D29BFDBD9002F8F23 /* ContentView.swift in Sources */,
 				B14D8C2B29BFDBD9002F8F23 /* freefall_watchApp.swift in Sources */,
 				B1C9602529CA691900AAD22D /* LocationManager.swift in Sources */,
 				B1C9603A29CA6CE000AAD22D /* JumpDetailView.swift in Sources */,
@@ -507,7 +496,6 @@
 				B1C9602C29CA69C900AAD22D /* Jump.xcdatamodeld in Sources */,
 				B135D64829CA45E700A918BC /* PhoneConnector.swift in Sources */,
 				B1C9603129CA6B6600AAD22D /* Jump+CoreDataProperties.swift in Sources */,
-				B1C9603629CA6CB700AAD22D /* JumpListView.swift in Sources */,
 				B1C9602F29CA6B5B00AAD22D /* Jump+CoreDataClass.swift in Sources */,
 				B1C9602329CA690700AAD22D /* SensorManager.swift in Sources */,
 				B1C9603429CA6C7200AAD22D /* ControlsView.swift in Sources */,
@@ -541,7 +529,10 @@
 				);
 				INFOPLIST_FILE = freefall/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -569,7 +560,10 @@
 				DEVELOPMENT_TEAM = GSN5BP25KK;
 				INFOPLIST_FILE = freefall/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -634,7 +628,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -685,7 +682,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
 				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
@@ -723,7 +723,10 @@
 				INFOPLIST_KEY_NSMotionUsageDescription = "Required for freefall tracking";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.steflw.freefall;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -771,7 +774,10 @@
 				INFOPLIST_KEY_NSMotionUsageDescription = "Required for freefall tracking";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.steflw.freefall;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
@@ -779,8 +785,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 9.1;

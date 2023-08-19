@@ -7,33 +7,33 @@
 
 import Foundation
 
+protocol Sensor {
+  func start()
+  func stop()
+}
+
 class SensorManager: NSObject, ObservableObject {
   var locationManager = LocationManagerService()
-  var alti = FreefallDetector()
-//  var accelerometer = AccelerometerManager()
+  var altiManager = FreefallDetector()
   
 
   func start() {
     self.locationManager.manager.startUpdatingLocation()
-    self.alti.startDetection()
-//    self.accelerometer.start()
+    self.altiManager.startDetection()
   }
   
   func stop() {
+    
     self.locationManager.manager.stopUpdatingLocation()
-    self.alti.stopDetection()
-//    self.accelerometer.stop()
+    self.altiManager.stopDetection()
   }
   
   func reset() {
-    self.alti.altiReadings = []
+    self.altiManager.altiReadings = []
     self.locationManager.locationReadings = []
-//    self.accelerometer.accelerometerData = []
   }
+
+
 }
 
-protocol Sensor {
-  func start()
-  
-  func stop()
-}
+

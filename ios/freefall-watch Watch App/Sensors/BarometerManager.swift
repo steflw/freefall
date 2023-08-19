@@ -10,13 +10,7 @@ import CoreMotion
 
 class FreefallDetector: ObservableObject {
   let altimeter = CMAltimeter()
-  var previousAltitudes = [NSNumber](repeating: 0.0, count: 3)
-  var currentIndex = 0
-  
-  var prevTime = 0.0
-  var delay = 0.0
-  
-  var altiReadings: [CMAltitudeData] = []
+  var altiReadings: [AltimeterReading] = []
   
   
   func startDetection() {
@@ -29,11 +23,7 @@ class FreefallDetector: ObservableObject {
       guard error == nil else { return }
       guard let data = data else { return }
       
-      self.altiReadings.append(data)
-      
-      self.delay = (data.timestamp - self.prevTime)
-      self.prevTime = data.timestamp
-      print(data, self.delay)
+      self.altiReadings.append(AltimeterReading(timestamp: Date().timeIntervalSince1970, relativeAltitude: data.relativeAltitude.stringValue))
     })
   }
   
@@ -43,3 +33,8 @@ class FreefallDetector: ObservableObject {
   }
 }
 
+func sensorToUnixTimestamp(sensorTimestamp: TimeInterval) -> TimeInterval {
+    // Get the time when the system was last booted
+    let unixTimestamp = Date().timeIntervalSince1970 - ProcessInfo.processInfo.systemUptime
+    return unixTimestamp
+}

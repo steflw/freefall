@@ -17,7 +17,7 @@ struct PersistenceController {
         let newItem = Jump(context: viewContext)
         newItem.timestamp = Date()
       let reading = CMAltitudeData()
-      newItem.altitude = [CMAltitudeData()]
+//      newItem.altitude = [CMAltitudeData()]
         do {
             try viewContext.save()
         } catch {

@@ -17,7 +17,6 @@ export function useLocationPermissions() {
       } catch(e) {
         console.error("useLocationPermissions error", e);
       }
-      
     })();
   }, []);
 

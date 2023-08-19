@@ -12,7 +12,7 @@ class LocationManagerService: NSObject, ObservableObject, CLLocationManagerDeleg
   var manager: CLLocationManager = CLLocationManager()
   @Published var location: CLLocation?
   @Published var enabled: Bool = false
-  var locationReadings: [CLLocation] = []
+  var locationReadings: [LocationData] = []
 
   override init() {
     super.init()
@@ -25,8 +25,7 @@ class LocationManagerService: NSObject, ObservableObject, CLLocationManagerDeleg
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     location = locations.first
     print("location", location)
-    self.locationReadings = self.locationReadings + locations
-    print("locations", locations)
+    self.locationReadings.append(LocationData(latitude: location?.coordinate.latitude, longitude: location?.coordinate.longitude, timestamp: Date().timeIntervalSince1970, speed: location?.speed, speedAccuracy: location?.speedAccuracy, course: location?.course))
   }
   
   func locationManager(
@@ -43,3 +42,11 @@ class LocationManagerService: NSObject, ObservableObject, CLLocationManagerDeleg
   }
 }
 
+struct LocationData: Codable {
+    let latitude: Double?
+    let longitude: Double?
+    let timestamp: Double?
+    let speed: Double?
+    let speedAccuracy: Double?
+    let course: Double?
+}
