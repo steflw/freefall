@@ -42,5 +42,5 @@ export class Location extends Realm.Object<Location> {
 }
 
 export const realmConfig: Realm.Configuration = {
-  schema: [Altitude, Jump],
+  schema: [Altitude, , Location, Jump],
 };

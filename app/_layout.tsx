@@ -1,5 +1,15 @@
-import { Slot } from "expo-router";
+import { Stack } from "expo-router";
+import { RealmProvider, createRealmContext } from "@realm/react";
+import { Altitude, Jump, realmConfig } from "../realm/model";
+// const { RealmProvider, useRealm, useObject, useQuery } =
+//   createRealmContext(realmConfig);
 
 export default function RootLayout() {
-  return <Slot />;
+  return (
+    <RealmProvider schema={[Jump, Altitude]}>
+      <Stack screenOptions={{
+        
+      }} />
+    </RealmProvider>
+  );
 }

@@ -18,24 +18,26 @@ type JumpFile = {
 };
 
 export async function processJumpFile(file: JumpFileRaw) {
+  console.log(file.id)
   console.log("file fields", Object.keys(file));
-  console.log("file", file);
+  // console.log("file", file);
   // await deleteAllFiles()
   const altitudeData = JSON.parse(file.altitude) as JumpFile["altitude"];
-  console.log({altitudeData})
+  // console.log({ altitudeData });
   const locationData = JSON.parse(file.location) as JumpFile["location"];
 
-  await writeData({
-    _id: file.id,
-    id: file.id,
-    name: "test",
-    timestamp: file.unixTimestamp,
-    // location: locationData,
-    altitude: altitudeData,
-  });
-  // deleteFile(file[0].url);
+  try {
+    await writeData({
+      _id: file.id,
+      id: file.id,
+      name: "test",
+      timestamp: file.unixTimestamp,
+      location: locationData,
+      altitude: altitudeData,
+    });
+    // deleteFile(file[0].url);
+  } catch (e) {}
 }
-// Temp
 
 let realm;
 
