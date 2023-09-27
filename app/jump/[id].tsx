@@ -1,20 +1,24 @@
-import { useObject, useQuery, useRealm } from "@realm/react";
+import { useObject } from "@realm/react";
 import dayjs from "dayjs";
-import { useLocalSearchParams, useSearchParams } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 import { Text, View } from "react-native";
 import { Jump } from "../../realm/model";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import React from "react";
 
-export default function JumpPage(...props) {
+export default function JumpPage() {
   const params = useLocalSearchParams();
+  const { top } = useSafeAreaInsets();
 
-  // get jump by id from realm
   const jump = useObject<Jump>("Jump", params.id as string);
   console.log({ jump });
   return (
-    <View>
-      <Text>{dayjs.unix(jump.timestamp).format("DD/MM/YY HH:mm")}</Text>
-      <Text>{jump.altitude.length}</Text>
-      {/* TODO: add location to realm */}
+    <View style={{ flex: 1, backgroundColor: "white" }}>
+      <View style={{ paddingTop: top + 50 }}>
+        <Text>{dayjs.unix(jump.timestamp).format("DD/MM/YY HH:mm")}</Text>
+        <Text>{jump.altitude.length}</Text>
+        <Text>{jump.location.length}</Text>
+      </View>
     </View>
   );
 }
