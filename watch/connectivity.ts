@@ -32,6 +32,8 @@ function sub(realm: Realm) {
     try {
       const fetchedRes = await FileSystem.readAsStringAsync(file[0].url);
       const parsedRes = JSON.parse(fetchedRes)
+      console.log(parsedRes)
+      console.log(parsedRes.location)
       await processJumpFile(realm, parsedRes)
       deleteFile( file[0].url)
     } catch (error) {

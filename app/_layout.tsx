@@ -17,6 +17,9 @@ export default function RootLayout() {
               headerShadowVisible: false,
               headerTransparent: true,
               headerBlurEffect: "light",
+              headerTitleStyle: {
+                fontFamily: 'JBMono-Bold'
+              },
             }}
           />
         </SafeAreaProvider>

@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from "react-native";
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import "../watch/connectivity";
 import { useLocationPermissions } from "../hooks/useLocationPermissions";
 import dayjs from "dayjs";
@@ -19,16 +19,14 @@ import { Link, useRouter } from "expo-router";
 import { Jump, realmConfig } from "../realm/model";
 import { useQuery } from "@realm/react";
 import { useWatchEvents } from "../watch/connectivity";
-
-
-
+import { useFonts } from "../utils/useFonts";
 
 export default function Home() {
-  // TODO: add location permissions
-  // const hasLocationPermissions = useLocationPermissions();
+  useFonts()
+  const hasLocationPermissions = useLocationPermissions();
   useWatchEvents()
-  const { top } = useSafeAreaInsets();
 
+  const { top } = useSafeAreaInsets();
   return (
     <View style={[styles.container, { paddingTop: top + 40 }]}>
       <JumpList />
@@ -42,9 +40,10 @@ const styles = StyleSheet.create({
 });
 
 const JumpList = () => {
-  const query = useQuery<Jump>("Jump");
+  const query = useQuery<Jump>("Jump").sorted("timestamp", true);
   const router = useRouter();
   console.log({ query });
+
   const navigatetoJump = useCallback((id: string) => {
     router.push(`/jump/${id}`);
   }, []);
@@ -68,7 +67,7 @@ function JumpListItem({ item, extraData }: ListRenderItemInfo<Jump>) {
       onPress={() => extraData.navigatetoJump(item._id)}
     >
       <View key={String(item._id)} style={{}}>
-        <Text>{dayjs.unix(item.timestamp).format("DD/MM/YY HH:mm")}</Text>
+        <Text style={{ fontFamily: 'JBMono-SemiBold' }}>{dayjs.unix(item.timestamp).format("DD/MM/YY HH:mm")}</Text>
       </View>
     </TouchableOpacity>
   );
