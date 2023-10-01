@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from "react-native";
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import "../watch/connectivity";
 import { useLocationPermissions } from "../hooks/useLocationPermissions";
 import dayjs from "dayjs";
@@ -20,18 +20,25 @@ import { Jump, realmConfig } from "../realm/model";
 import { useQuery } from "@realm/react";
 import { useWatchEvents } from "../watch/connectivity";
 import { useFonts } from "../utils/useFonts";
+import * as SplashScreen from "expo-splash-screen";
+import * as Font from "expo-font";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function Home() {
-  useFonts()
+  const [appIsReady, setAppIsReady] = useState(false);
   const hasLocationPermissions = useLocationPermissions();
-  useWatchEvents()
-
+  useWatchEvents();
   const { top } = useSafeAreaInsets();
+
+  
+
+
+
   return (
     <View style={[styles.container, { paddingTop: top + 40 }]}>
       <JumpList />
     </View>
-
   );
 }
 
@@ -67,7 +74,9 @@ function JumpListItem({ item, extraData }: ListRenderItemInfo<Jump>) {
       onPress={() => extraData.navigatetoJump(item._id)}
     >
       <View key={String(item._id)} style={{}}>
-        <Text style={{ fontFamily: 'JBMono-SemiBold' }}>{dayjs.unix(item.timestamp).format("DD/MM/YY HH:mm")}</Text>
+        <Text style={{ fontFamily: "JBMono-SemiBold" }}>
+          {dayjs.unix(item.timestamp).format("DD/MM/YY HH:mm")}
+        </Text>
       </View>
     </TouchableOpacity>
   );
