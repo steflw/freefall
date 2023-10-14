@@ -45,8 +45,9 @@ export default function RootLayout() {
           <Stack
 
             screenOptions={{
-              title: "Logbook",
+              title: "LOGBOOK",
               headerShadowVisible: false,
+              headerBackTitleVisible: false, 
               headerTransparent: true,
               headerBlurEffect: "light",
               headerTitleStyle: {

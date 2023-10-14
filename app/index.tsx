@@ -30,11 +30,7 @@ export default function Home() {
   const hasLocationPermissions = useLocationPermissions();
   useWatchEvents();
   const { top } = useSafeAreaInsets();
-
   
-
-
-
   return (
     <View style={[styles.container, { paddingTop: top + 40 }]}>
       <JumpList />

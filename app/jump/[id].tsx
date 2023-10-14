@@ -49,6 +49,7 @@ export default function JumpPage() {
           headerTitleStyle: {
            fontFamily: 'JBMono-Bold'
           },
+          headerBackTitleVisible: false, 
           headerShadowVisible: false,
           headerTransparent: true,
           headerBlurEffect: "light",
