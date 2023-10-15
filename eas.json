@@ -9,6 +9,7 @@
         "gradleCommand": ":app:assembleDebug"
       },
       "ios": {
+        "image": "latest",
         "buildConfiguration": "Debug",
         "resourceClass": "m1-medium"
       }
@@ -16,11 +17,13 @@
     "preview": {
       "distribution": "internal",
       "ios": {
+        "image": "latest",
         "resourceClass": "m1-medium"
       }
     },
     "production": {
       "ios": {
+        "image": "latest",
         "resourceClass": "m1-medium"
       }
     }
