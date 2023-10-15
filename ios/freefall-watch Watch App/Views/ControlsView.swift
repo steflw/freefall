@@ -10,9 +10,6 @@ import SwiftUI
 struct ControlsView: View {
   @ObservedObject var jumpManager: JumpManager
     var body: some View {
-      VStack(alignment: .leading) {
-        Text("Record")
-        Button(self.jumpManager.active ? "Stop" : "Start", action: self.jumpManager.active ? self.jumpManager.stop : self.jumpManager.start)
-      }
+        Button(self.jumpManager.active ? "Stop recording" : "Start recording", action: self.jumpManager.active ? self.jumpManager.stop : self.jumpManager.start)
     }
 }
