@@ -1,7 +1,7 @@
 import { useObject } from "@realm/react";
 import dayjs from "dayjs";
 import { Stack, useLocalSearchParams } from "expo-router";
-import { Text, View, Dimensions } from "react-native";
+import { Text, View, Dimensions, Button } from "react-native";
 import { Jump } from "../../realm/model";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import React, { useEffect, useMemo, useRef } from "react";
@@ -17,8 +17,7 @@ export default function JumpPage() {
   const { top } = useSafeAreaInsets();
 
   const jump = useObject<Jump>("Jump", params.id as string);
-  console.log({ jump });
-  console.log(jump.location);
+
   const mapRef = useRef(null);
   const { width, height } = Dimensions.get("window");
 
@@ -80,6 +79,7 @@ export default function JumpPage() {
         <Text style={{ fontFamily: 'JBMono' }}>Location readings: {jump.location.length}</Text>
         </View>
       </View>
+      {/* <Button title="Delete" onPress={() => {}}  /> */}
     </View>
   );
 }
