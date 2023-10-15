@@ -43,7 +43,6 @@ export default function RootLayout() {
       <View onLayout={onLayoutRootView} style={{ flex: 1, backgroundColor: "white" }}>
         <SafeAreaProvider>
           <Stack
-
             screenOptions={{
               title: "LOGBOOK",
               headerShadowVisible: false,
@@ -51,7 +50,8 @@ export default function RootLayout() {
               headerTransparent: true,
               headerBlurEffect: "light",
               headerTitleStyle: {
-                fontFamily: 'JBMono-Bold'
+                fontFamily: 'JBMono-Bold',
+                color: "black",
               },
             }}
           />

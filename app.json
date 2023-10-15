@@ -3,12 +3,14 @@
     "originalFullName": "@steflw/Freefall",
     "scheme": "freefall",
     "plugins": [
-      "expo-apple-authentication", [
+      "expo-apple-authentication",
+      [
         "expo-location",
         {
           "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
         }
-      ]
+      ],
+      "expo-router"
     ],
     "web": {
       "bundler": "metro"
@@ -31,7 +33,7 @@
         "NSMotionUsageDescription": "This app needs access to your location to track your freefall."
       }
     },
-    "extra": {  
+    "extra": {
       "eas": {
         "projectId": "321eb803-0e72-4382-9af1-53bb8b353a53"
       }
