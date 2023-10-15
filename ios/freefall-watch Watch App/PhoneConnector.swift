@@ -46,5 +46,9 @@ extension PhoneConnector: WCSessionDelegate {
       self.receivedMessage = msg
     }
   }
+  
+  func sessionReachabilityDidChange(_ session: WCSession) {
+    
+  }
 }
 

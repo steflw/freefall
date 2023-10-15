@@ -2,7 +2,7 @@ import * as FileSystem from "expo-file-system";
 import { watchEvents } from "react-native-watch-connectivity";
 
 import { create } from 'zustand'
-import { processJumpFile } from "./processfile";
+import { processJumpFile, sendJumpToAnalyticsService } from "./processfile";
 import { deleteFile } from "./fs";
 import { useEffect } from "react";
 import { useRealm } from "@realm/react";
@@ -32,10 +32,10 @@ function sub(realm: Realm) {
     try {
       const fetchedRes = await FileSystem.readAsStringAsync(file[0].url);
       const parsedRes = JSON.parse(fetchedRes)
-      console.log(parsedRes)
-      console.log(parsedRes.location)
-      await processJumpFile(realm, parsedRes)
-      deleteFile( file[0].url)
+      console.log(parsedRes.location.length)
+      processJumpFile(realm, parsedRes)
+      sendJumpToAnalyticsService(parsedRes);
+      deleteFile(file[0].url)
     } catch (error) {
       console.error("file-received event error", error);
     }
@@ -49,7 +49,6 @@ function sub(realm: Realm) {
     console.log("FILE RECEIVED ERROR EVENT", error);
   });
 }
-
 
 export function useWatchEvents() {
   const realm = useRealm()
