@@ -4,24 +4,16 @@ import "../watch/connectivity";
 import { useLocationPermissions } from "../hooks/useLocationPermissions";
 import dayjs from "dayjs";
 import {
-  SafeAreaView,
   useSafeAreaInsets,
 } from "react-native-safe-area-context";
 
-import {
-  FlashList,
-  ListRenderItem,
-  ListRenderItemInfo,
-} from "@shopify/flash-list";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { Link, useRouter } from "expo-router";
+import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
+import {  useRouter } from "expo-router";
 
-import { Jump, realmConfig } from "../realm/model";
+import { Jump } from "../realm/model";
 import { useQuery } from "@realm/react";
 import { useWatchEvents } from "../watch/connectivity";
-import { useFonts } from "../utils/useFonts";
 import * as SplashScreen from "expo-splash-screen";
-import * as Font from "expo-font";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -30,7 +22,7 @@ export default function Home() {
   const hasLocationPermissions = useLocationPermissions();
   useWatchEvents();
   const { top } = useSafeAreaInsets();
-  
+
   return (
     <View style={[styles.container, { paddingTop: top + 40 }]}>
       <JumpList />
@@ -45,29 +37,31 @@ const styles = StyleSheet.create({
 const JumpList = () => {
   const query = useQuery<Jump>("Jump").sorted("timestamp", true);
   const router = useRouter();
-  console.log({ query });
 
-  const navigatetoJump = useCallback((id: string) => {
+  const navigateToJump = useCallback((id: string) => {
     router.push(`/jump/${id}`);
   }, []);
 
+  const renderItem = (props) => {
+    return <JumpListItem navigateToJump={navigateToJump} {...props} />;
+  }
+
   return (
-    <FlashList
+    <FlatList
       data={query}
-      extraData={{ navigatetoJump }}
+      extraData={{ navigateToJump }}
       contentContainerStyle={{ paddingHorizontal: 10 }}
       keyExtractor={(item) => String(item._id)}
-      renderItem={JumpListItem}
-      estimatedItemSize={39}
+      renderItem={renderItem}
     />
   );
 };
 
-function JumpListItem({ item, extraData }: ListRenderItemInfo<Jump>) {
+function JumpListItem({item, navigateToJump}) {
   return (
     <TouchableOpacity
       style={{ height: 40, justifyContent: "center" }}
-      onPress={() => extraData.navigatetoJump(item._id)}
+      onPress={() => navigateToJump(item._id)}
     >
       <View key={String(item._id)} style={{}}>
         <Text style={{ fontFamily: "JBMono-SemiBold" }}>

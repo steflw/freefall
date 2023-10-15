@@ -38,7 +38,7 @@ struct ContentView: View {
       NavigationStack {
         List {
           ControlsView(jumpManager: jumpManager)
-          ForEach(jumps){
+          ForEach(jumps.reversed()){
             jump in  NavigationLink(formatDate(date: jump.timestamp ?? Date()), value: jump)
           }
         }.navigationTitle("Jumps").navigationDestination(for: Jump.self) {jump in JumpDetailView(jump: jump)
