@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct JumpDetailView: View {
-  @ObservedObject var phoneConnector = PhoneConnector()
+//  @ObservedObject var phoneConnector = PhoneConnector()
 
   var jump: Jump
   var body: some View {
@@ -18,27 +18,7 @@ struct JumpDetailView: View {
       Text("Accelerometer : " + String(jump.accelerometer?.count ?? 0)).font(.body).fontWeight(.light)
     }.navigationTitle(formatDate(date: jump.timestamp ?? Date())).font(.headline)
     Button("Send jump") {
-      self.sendFile(jump: jump)
-    }
-  }
-
-
-  private func sendFile(jump: Jump) {
-    print("send message")
-    do {
-      let jsonEncoder = JSONEncoder()
-      let jsonData = try jsonEncoder.encode(jump)
-      let fileURL = FileManager.default
-          .urls(for: .documentDirectory, in: .userDomainMask)
-          .first!
-          .appendingPathComponent((jump.id?.uuidString ?? "json")+".json")
-      try jsonData.write(to: fileURL)
-      self.phoneConnector.session.transferFile(fileURL, metadata: nil)
-    } catch {
-      let nsError = error as NSError
-      print("Error writing person JSON to file: \(error.localizedDescription)")
-      print("ERROR when reading:", nsError)
-      print("ERROR when reading:", nsError.userInfo)
+//      self.sendFile(jump: jump)
     }
   }
 }
@@ -46,7 +26,7 @@ struct JumpDetailView: View {
 func formatDate(date: Date) -> String {
   var strDate = ""
   let dateFormatter = DateFormatter()
-  let timezone = TimeZone.current.abbreviation() ?? "CET"  // get current TimeZone abbreviation or set to CET
+  let timezone = TimeZone.current.abbreviation() ?? "GMT"  // get current TimeZone abbreviation or set to CET
   dateFormatter.timeZone = TimeZone(abbreviation: timezone) //Set timezone that you want
   dateFormatter.locale = NSLocale.current
   dateFormatter.dateFormat = "dd.MM.yyyy HH:mm" //Specify your format that you want
